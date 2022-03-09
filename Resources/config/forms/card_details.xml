@@ -29,7 +29,7 @@
 
             <params>
                 <param name="entity_class" value="Pixel\DirectoryBundle\Entity\Card"/>
-                <param name="route_schema" value="/card/{implode('-', object)}"/>
+                <param name="route_schema" value="/annuaire/{implode('-', object)}"/>
             </params>
         </property>
         <property name="logo" colspan="6" type="single_media_selection">
