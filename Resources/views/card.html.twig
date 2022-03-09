@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+
+ {% block breadcrumb %}
+     
+ {% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+
+    {% if not card.isActive %}
+        <h1>{{ "alert.message"|trans }}</h1>
+    {% endif %}
+    <div class="singleAssociation my-8">
+        <div class="relative mb-8">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                <div class="w-full border-t border-gray-300"></div>
+            </div>
+            <div class="relative flex justify-start">
+                    <span class="pr-6 bg-white text-2xl uppercase font-light text-gray-900">
+                      {{ card.name }}
+                    </span>
+
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-8">
+            <div class="content">
+                <div class="bg-gray p-8 rounded-xl prose">
+                    <p><span class="text-bleu font-semibold uppercase">{{ "website"|trans }} : </span><a
+                                href="{{ card.url }}">{{ card.url }}</a></p>
+                    <p><span class="text-bleu font-semibold uppercase">{{ "email"|trans }} : </span>{{ card.email }}</p>
+                    <p>
+                        <span class="text-bleu font-semibold uppercase">{{ "phone.number"|trans }} : </span>{{ card.phoneNumber }}
+                    </p>
+                    <p><span class="text-bleu font-semibold uppercase">{{ "address"|trans }}
+                            : </span>{% if card.location.number is defined %}{{ card.location.number }},{% endif %} {% if card.location.street is defined %}{{ card.location.street }}{% endif %} {% if card.location.code is defined %}{{ card.location.code }}{% endif %} {%  if card.location.town is defined %}{{ card.location.town }}{% endif %}
+                    </p>
+                    {% if card.facebook or card.instagram or card.twitter or card.linkedin %}
+                        <h2>{{ "our.social.medias"|trans }}</h2>
+                        {% if card.facebook %}<p><span class="text-bleu font-semibold uppercase">Facebook : </span><a
+                                    href="{{ card.facebook }}">{{ card.facebook }}</a></p>{% endif %}
+                        {% if card.instagram %}<span class="text-bleu font-semibold uppercase"><p>Instagram : </span><a
+                                href="{{ card.instagram }}">{{ card.instagram }}</a></p>{% endif %}
+                        {% if card.twitter %}<span class="text-bleu font-semibold uppercase"><p>Twitter : </span><a
+                                href="{{ card.twitter }}">{{ card.twitter }}</a></p>{% endif %}
+                        {% if card.linkedin %}<span class="text-bleu font-semibold uppercase"><p>LinkedIn : </span><a
+                                href="{{ card.linkedin }}">{{ card.linkedin }}</a></p>{% endif %}
+                    {% endif %}
+                </div>
+                <p>{{ card.description|raw }}</p>
+
+            </div>
+            <div class="image">
+                {% if card.logo %}
+                    {% set media = sulu_resolve_media(card.logo.id, 'fr') %}
+                    <img class="rounded-xl" src="{{ media.thumbnails['600x400'] }}" title="{{ media.title }}"/>
+                {% endif %}
+
+                {% if card.medias['ids'] is defined %}
+                    {% for mediaCard in card.medias['ids'] %}
+                        {% set media = sulu_resolve_media(mediaCard, 'fr') %}
+                        {% if media %}
+                            <img src="{{ media.thumbnails['600x400'] }}" title="{{ media.title }}"/>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="bg-yellow">
+        <div class="max-w-7xl mx-auto py-8">
+            <div class="relative">
+                <div class="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div class="w-full border-t border-white"></div>
+                </div>
+                <div class="relative flex justify-start">
+                    <span class="pr-6 bg-yellow text-2xl uppercase font-light text-white">
+                      Associations de la même catégorie
+                    </span>
+
+                </div>
+            </div>
+            <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8 mt-8">
+                <li>
+                    <div class="relative object-cover shadow-lg rounded-lg">
+                        <div class="aspect-w-3 aspect-h-2 rounded-lg">
+                            <img class="object-cover rounded-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+                            <div class="space-y-2 absolute rounded-lg">
+                                <div class="text-lg leading-6 font-medium space-y-1 px-6 py-3 pt-4 absolute bottom-0 bg-bleu/75 rounded-bl-lg rounded-br-lg">
+                                    <p class="bg-black text-white text-sm inline-block rounded-full px-2 py-1 absolute -mt-8">Catégorie</p>
+                                    <h3 class="text-white text-base">Nom de l'association</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="relative object-cover shadow-lg rounded-lg">
+                        <div class="aspect-w-3 aspect-h-2 rounded-lg">
+                            <img class="object-cover rounded-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+                            <div class="space-y-2 absolute rounded-lg">
+                                <div class="text-lg leading-6 font-medium space-y-1 px-6 py-3 pt-4 absolute bottom-0 bg-bleu/75 rounded-bl-lg rounded-br-lg">
+                                    <p class="bg-black text-white text-sm inline-block rounded-full px-2 py-1 absolute -mt-8">Catégorie</p>
+                                    <h3 class="text-white text-base">Nom de l'association</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="relative object-cover shadow-lg rounded-lg">
+                        <div class="aspect-w-3 aspect-h-2 rounded-lg">
+                            <img class="object-cover rounded-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
+                            <div class="space-y-2 absolute rounded-lg">
+                                <div class="text-lg leading-6 font-medium space-y-1 px-6 py-3 pt-4 absolute bottom-0 bg-bleu/75 rounded-bl-lg rounded-br-lg">
+                                    <p class="bg-black text-white text-sm inline-block rounded-full px-2 py-1 absolute -mt-8">Catégorie</p>
+                                    <h3 class="text-white text-base">Nom de l'association</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    {% endblock %}
