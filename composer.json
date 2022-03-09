@@ -8,7 +8,7 @@
     "news",
     "directory"
   ],
-  "homepage": "https://github.com/Pixel-Developpement/sulu-townhallbundle",
+  "homepage": "https://github.com/Pixel-Developpement/sulu-directory-bundle",
   "license": "MIT",
   "authors": [
     {
@@ -17,7 +17,6 @@
   ],
   "require": {
     "php": "^7.4 || ^8.0",
-    "sulu/content-bundle": "^0.6.1",
     "sulu/sulu": "2.4.*",
     "symfony/config": "^4.4 || ^5.0",
     "symfony/dependency-injection": "^4.4 || ^5.0",
