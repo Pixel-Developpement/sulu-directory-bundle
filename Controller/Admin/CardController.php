@@ -139,7 +139,7 @@ class CardController extends AbstractRestController implements ClassResourceInte
     {
         $logoId = $data['logo']['id'] ?? null;
         $location = $data['location'] ?? null;
-        $seo = (isset($data['ext']['seo'])) ? $data['ext']['seo'] : null;
+        $seo = (isset($data['ext']['seo'])) ? $data['ext']['seo'] : $data['seo'];
         $description = $data['description'] ?? null;
         $isActive = $data['isActive'] ?? null;
         $typeId = (isset($data['type']['id'])) ? $data['type']['id'] : $data['type'];
