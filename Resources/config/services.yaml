@@ -4,3 +4,6 @@ services:
     autoconfigure: true
   Pixel\DirectoryBundle\Controller\Website\:
     resource: '../../Controller/Website'
+
+  Pixel\DirectoryBundle\Repository\:
+    resource: '../../Repository'

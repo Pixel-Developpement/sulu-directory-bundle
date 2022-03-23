@@ -59,6 +59,18 @@ class CardRepository extends EntityRepository implements DataProviderRepositoryI
         return $query->getQuery()->getSingleScalarResult();
     }
 
+    public function findWithSameCategory(int $categoryId, int $id): array
+    {
+        $query = $this->createQueryBuilder('card')
+            ->leftJoin('card.category', 'category')
+            ->where('category.id = :categoryId')
+            ->andWhere('card.id != :id')
+            ->setMaxResults(3)
+            ->setParameter('categoryId', $categoryId)
+            ->setParameter('id', $id);
+        return $query->getQuery()->getResult();
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -79,6 +91,4 @@ class CardRepository extends EntityRepository implements DataProviderRepositoryI
         $queryBuilder->innerJoin($alias . '.translations', 'translation', Join::WITH, 'translation.locale = :locale');
         $queryBuilder->setParameter('locale', $locale);
     }
-
-
 }
