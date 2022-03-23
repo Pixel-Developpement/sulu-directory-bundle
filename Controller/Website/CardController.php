@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pixel\DirectoryBundle\Controller\Website;
 
 use Pixel\DirectoryBundle\Entity\Card;
+use Pixel\DirectoryBundle\Repository\CardRepository;
 use Sulu\Bundle\PreviewBundle\Preview\Preview;
 use Sulu\Bundle\RouteBundle\Entity\RouteRepositoryInterface;
 use Sulu\Bundle\WebsiteBundle\Resolver\TemplateAttributeResolverInterface;
@@ -14,6 +15,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CardController extends AbstractController
 {
+    private CardRepository $cardRepository;
+
+    public function __construct(CardRepository $cardRepository)
+    {
+        $this->cardRepository = $cardRepository;
+    }
+
     /**
      * @return string[]
      */
@@ -30,13 +38,11 @@ class CardController extends AbstractController
 
     public function indexAction(Card $card, $attributes = [], $preview = false, $partial = false): Response
     {
-
-
         $parameters = $this->get('sulu_website.resolver.template_attribute')->resolve([
             'card' => $card,
             'localizations' => $this->getLocalizationsArrayForEntity($card),
+            'sameCategoryCards' => $this->cardRepository->findWithSameCategory($card->getCategory()->getId(), $card->getId())
         ]);
-
 
         if ($partial) {
             $content = $this->renderBlock(
