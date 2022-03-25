@@ -9,7 +9,7 @@ use Pixel\DirectoryBundle\Entity\Card;
 use Sulu\Bundle\WebsiteBundle\Controller\DefaultController;
 use Sulu\Component\Content\Compat\StructureInterface;
 
-class ListController extends DefaultController
+class ListTypeController extends DefaultController
 {
     /**
      * @var EntityManagerInterface
