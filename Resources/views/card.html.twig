@@ -42,9 +42,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                           d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
                                 </svg>
-                                <a
-                                        href="{{ card.url }}"><span class="visible sm:hidden">Site internet</span><span
-                                            class="hidden sm:visible">{{ card.url }}</span></a></p>
+                                <a href="{{ card.url }}" target="_blank"> {{ card.url }}</a></p>
                         {% endif %}
                         {% if card.email %}
                             <p class="flex items-center flex-col sm:flex-row gap-x-2 mb-4 text-sm sm:text-base text-center sm:text-left">
@@ -134,7 +132,7 @@
                 <div class="image">
                     {% if card.logo %}
                         {% set media = sulu_resolve_media(card.logo.id, 'fr') %}
-                        <img class="rounded-xl" src="{{ media.thumbnails['600x400'] }}" title="{{ card.title }}"/>
+                        <img class="rounded-xl" src="{{ media.thumbnails['600x400'] }}" title="{{ card.name }}"/>
                     {% endif %}
                 </div>
             </div>
@@ -143,7 +141,7 @@
                     {% for mediaCard in card.medias['ids'] %}
                         {% set media = sulu_resolve_media(mediaCard, 'fr') %}
                         {% if media %}
-                            <img src="{{ media.thumbnails['massonry'] }}" title="{{ card.title }}"
+                            <img src="{{ media.thumbnails['massonry'] }}" title="{{ card.name }}"
                                  class="break-inside rounded-xl "/>
                         {% endif %}
                     {% endfor %}
