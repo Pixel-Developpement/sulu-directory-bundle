@@ -28,7 +28,21 @@ class ListTypeController extends DefaultController
     protected function getAttributes($attributes, StructureInterface $structure = null, $preview = false)
     {
         $attributes = parent::getAttributes($attributes, $structure, $preview);
-        $attributes['cards'] = (isset($attributes['content']['types']['id'])) ? $this->entityManager->getRepository(Card::class)->findBy(['type' => $attributes['content']['types']['id']]) : false;
+        $cards = (isset($attributes['content']['types']['id'])) ? $this->entityManager->getRepository(Card::class)->findBy(['type' => $attributes['content']['types']['id']]) : false;
+        $attributes['cards'] = false;
+        if ($cards) {
+            $sortCards = [];
+            foreach ($cards as $card) {
+                $sortCards[$card->getName()] = $card;
+            }
+            ksort($sortCards);
+            $cards = [];
+            foreach ($sortCards as $card) {
+                $cards[] = $card;
+            }
+            $attributes['cards'] = $cards;
+        }
+
 
         return $attributes;
     }
