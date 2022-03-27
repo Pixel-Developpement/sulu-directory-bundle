@@ -34,7 +34,20 @@ class ListCategoriesController extends DefaultController
                 $categories[] = $category['id'];
             }
         }
-        $attributes['cards'] = (isset($attributes['content']['categories'])) ? $this->entityManager->getRepository(Card::class)->findBy(['category' => $categories]) : false;
+        $cards = (isset($attributes['content']['categories'])) ? $this->entityManager->getRepository(Card::class)->findBy(['category' => $categories]) : false;
+        $attributes['cards'] = false;
+        if ($cards) {
+            $sortCards = [];
+            foreach ($cards as $card) {
+                $sortCards[$card->getName()] = $card;
+            }
+            ksort($sortCards);
+            $cards = [];
+            foreach ($sortCards as $card) {
+                $cards[] = $card;
+            }
+            $attributes['cards'] = $cards;
+        }
 
         return $attributes;
     }

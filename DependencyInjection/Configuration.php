@@ -14,6 +14,16 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('pixel_directory');
+        $rootNode = $treeBuilder->getRootNode();
+
+        $rootNode
+            ->children()
+            ->booleanNode('relation')
+            ->defaultTrue()
+            ->end()
+            ->end();
+
         return $treeBuilder;
+
     }
 }

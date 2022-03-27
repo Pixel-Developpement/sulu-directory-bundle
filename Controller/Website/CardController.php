@@ -38,11 +38,16 @@ class CardController extends AbstractController
 
     public function indexAction(Card $card, $attributes = [], $preview = false, $partial = false): Response
     {
+
+        $relation = $this->getParameter('pixel_directory.relation');
+
         $parameters = $this->get('sulu_website.resolver.template_attribute')->resolve([
             'card' => $card,
             'localizations' => $this->getLocalizationsArrayForEntity($card),
-            'sameCategoryCards' => $this->cardRepository->findWithSameCategory($card->getCategory()->getId(), $card->getId())
+            'sameCategoryCards' => ($relation) ? $this->cardRepository->findWithSameCategory($card->getCategory()->getId(), $card->getId()) : false
         ]);
+
+
 
         if ($partial) {
             $content = $this->renderBlock(
