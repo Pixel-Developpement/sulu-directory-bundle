@@ -49,6 +49,8 @@ class CardObjectProvider implements PreviewObjectProviderInterface
         $twitter = $data['twitter'] ?? null;
         $linkedin = $data['linkedin'] ?? null;
         $medias = $data['medias'] ?? null;
+        $pdfs = $data['pdfs'] ?? null;
+        $youtubeId = $data['youtubeId'] ?? null;
 
         $object->setName($data['name']);
         $object->setLocation($location);
@@ -63,6 +65,8 @@ class CardObjectProvider implements PreviewObjectProviderInterface
         $object->setTwitter($twitter);
         $object->setLinkedin($linkedin);
         $object->setMedias($medias);
+        $object->setPdfs($pdfs);
+        $object->setYoutubeId($youtubeId);
     }
 
     public function setContext($object, $locale, array $context)

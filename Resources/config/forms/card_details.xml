@@ -52,9 +52,25 @@
             </params>
         </property>
 
-        <property name="medias" type="media_selection">
+        <property name="medias" type="media_selection" colspan="6">
             <meta>
                 <title>card.medias</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+        <property name="pdfs" type="media_selection" colspan="6">
+            <meta>
+                <title>card.pdfs</title>
+            </meta>
+            <params>
+                <param name="types" value="document"/>
+            </params>
+        </property>
+        <property name="youtubeId" type="text_line">
+            <meta>
+                <title>card.youtubeId</title>
             </meta>
         </property>
         <property name="url" type="url" colspan="4">

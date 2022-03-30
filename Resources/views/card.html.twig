@@ -128,11 +128,28 @@
                     <div class="prose max-w-none py-12">
                         {{ card.description|raw }}
                     </div>
+                    {% if card.pdfs is not empty %}
+                        <h2>Fichiers</h2>
+                        <ul>
+                            {% for pdf in card.pdfs['ids'] %}
+                                {% set doc = sulu_resolve_media(pdf, 'fr') %}
+                                <li><a href="{{ doc.url }}" target="_blank">{{ doc.title }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 </div>
                 <div class="image">
                     {% if card.logo %}
                         {% set media = sulu_resolve_media(card.logo.id, 'fr') %}
-                        <img class="rounded-xl" src="{{ media.thumbnails['600x400'] }}" title="{{ card.name }}"/>
+                        <a href="{{ media.url }}" data-fancybox="gallery"> <img class="rounded-xl" src="{{ media.thumbnails['600x400'] }}" title="{{ card.name }}"/></a>
+                    {% endif %}
+                    <br>
+                    {% if card.youtubeId is not empty %}
+                        <iframe src="https://www.youtube-nocookie.com/embed/{{ card.youtubeId }}?loop=1&modestbranding=1"
+                                longdose="www.youtube.com/watch?v={{ card.youtubeId }}"
+                                allowfullscreen="true"
+                                width="100%"
+                                height="300px"></iframe>
                     {% endif %}
                 </div>
             </div>
@@ -141,8 +158,9 @@
                     {% for mediaCard in card.medias['ids'] %}
                         {% set media = sulu_resolve_media(mediaCard, 'fr') %}
                         {% if media %}
-                            <img src="{{ media.thumbnails['massonry'] }}" title="{{ card.name }}"
-                                 class="break-inside rounded-xl "/>
+                            <a href="{{ media.url }}"  data-fancybox="gallery"><img src="{{ media.thumbnails['massonry'] }}" title="{{ card.name }}"
+                                                          class="break-inside rounded-xl "/></a>
+
                         {% endif %}
                     {% endfor %}
                 {% endif %}
@@ -189,4 +207,17 @@
         </div>
     {% endif %}
 
+{% endblock %}
+
+{% block style %}
+    {{ parent() }}
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css"
+    />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 {% endblock %}

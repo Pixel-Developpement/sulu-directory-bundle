@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.4.7 (30/03/2022)
+
++ Ajout vidéo youtube + fichier
++ Ajout fancybox pour les images
++ Ajout meta title par défaut pour la partie SEO
++ Ajout de la gestion des liens
+
+## 2.4.6 (27/03/2022)
+
++ Ajout d'un controlleur dédié pour la carte intéractive
++ Ajout tri alphabétique pour les listes
++ Ajout d'une option pour les fiches en relation
++ Retrait des espaces pour les noms des fiches
+
 ## 2.4.5 (25/03/2022)
 
 + Ajout vue liste pour les catégories

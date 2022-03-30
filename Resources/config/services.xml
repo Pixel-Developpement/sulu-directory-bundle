@@ -104,5 +104,12 @@
             <tag name="sulu_trash.restore_configuration_provider"/>
         </service>
 
+        <!--Link-->
+        <service id="sulu_directory.card_link_provider" class="Pixel\DirectoryBundle\Link\DirectoryLinkProvider">
+            <argument type="service" id="directory.card_repository"/>
+            <argument type="service" id="translator.default"/>
+            <tag name="sulu.link.provider" alias="annuaire"/>
+        </service>
+
     </services>
 </container>

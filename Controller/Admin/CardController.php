@@ -152,6 +152,8 @@ class CardController extends AbstractRestController implements ClassResourceInte
         $twitter = $data['twitter'] ?? null;
         $linkedin = $data['linkedin'] ?? null;
         $medias = $data['medias'] ?? null;
+        $pdfs = $data['pdfs'] ?? null;
+        $youtubeId = $data['youtubeId'] ?? null;
 
         $entity->setName($data['name']);
         $entity->setLocation($location);
@@ -170,6 +172,8 @@ class CardController extends AbstractRestController implements ClassResourceInte
         $entity->setTwitter($twitter);
         $entity->setLinkedin($linkedin);
         $entity->setMedias($medias);
+        $entity->setPdfs($pdfs);
+        $entity->setYoutubeId($youtubeId);
     }
 
     protected function updateRoutesForEntity(Card $entity): void

@@ -21,6 +21,8 @@
   "card.twitter": "Twitter",
   "card.linkedin": "LinkedIn",
   "card.medias": "Images",
+  "card.pdfs": "PDF",
+  "card.youtubeId": "Id de la vidéo YouTube",
   "sulu_activity.resource.cards": "Annuaire",
   "sulu_activity.description.cards.created": "{userFullName} a créé la fiche \"{resourceTitle}\"",
   "sulu_activity.description.cards.modified": "{userFullName} a modifié la fiche \"{resourceTitle}\"",
