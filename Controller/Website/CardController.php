@@ -40,7 +40,13 @@ class CardController extends AbstractController
     {
 
         $relation = $this->getParameter('pixel_directory.relation');
+        if (!$card->getSeo()) {
+           $seo = [
+                "title" => $card->getName(),
+            ];
 
+            $card->setSeo($seo);
+        }
         $parameters = $this->get('sulu_website.resolver.template_attribute')->resolve([
             'card' => $card,
             'localizations' => $this->getLocalizationsArrayForEntity($card),
