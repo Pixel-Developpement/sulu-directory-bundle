@@ -126,6 +126,18 @@ class Card
      * @ORM\Column(type="json", nullable=true)
      * @Serializer\Expose()
      */
+    private ?array $pdfs;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Serializer\Expose()
+     */
+    private ?string $youtubeId;
+
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     * @Serializer\Expose()
+     */
     private $medias;
 
     public function __construct()
@@ -524,5 +536,37 @@ class Card
     public function setMedias($medias): void
     {
         $this->medias = $medias;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getPdfs(): ?array
+    {
+        return $this->pdfs;
+    }
+
+    /**
+     * @param array|null $pdfs
+     */
+    public function setPdfs(?array $pdfs): void
+    {
+        $this->pdfs = $pdfs;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getYoutubeId(): ?string
+    {
+        return $this->youtubeId;
+    }
+
+    /**
+     * @param string|null $youtubeId
+     */
+    public function setYoutubeId(?string $youtubeId): void
+    {
+        $this->youtubeId = $youtubeId;
     }
 }
