@@ -7,3 +7,9 @@ services:
 
   Pixel\DirectoryBundle\Repository\:
     resource: '../../Repository'
+
+  Pixel\DirectoryBundle\Twig\SettingsExtension:
+    public: false
+    autowire: true
+    tags:
+      - { name: twig.extension }
