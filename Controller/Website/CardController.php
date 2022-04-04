@@ -40,8 +40,9 @@ class CardController extends AbstractController
     {
 
         $relation = $this->getParameter('pixel_directory.relation');
-        if (!$card->getSeo()) {
-           $seo = [
+
+        if (!$card->getSeo() || (isset($card->getSeo()['title']) && !$card->getSeo()['title'])) {
+            $seo = [
                 "title" => $card->getName(),
             ];
 

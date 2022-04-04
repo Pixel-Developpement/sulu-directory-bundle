@@ -121,7 +121,7 @@ class CardController extends AbstractRestController implements ClassResourceInte
         }
 
         $data = $request->request->all();
-        $this->mapDataToEntity($data, $item);
+        $this->mapDataToEntity($data, $item, $request);
         $this->updateRoutesForEntity($item);
         $this->domainEventCollector->collect(
             new CardModifiedEvent($item, $data)
@@ -135,11 +135,11 @@ class CardController extends AbstractRestController implements ClassResourceInte
     /**
      * @param array<string, mixed> $data
      */
-    protected function mapDataToEntity(array $data, Card $entity): void
+    protected function mapDataToEntity(array $data, Card $entity, Request $request): void
     {
         $logoId = $data['logo']['id'] ?? null;
         $location = $data['location'] ?? null;
-        $seo = (isset($data['ext']['seo'])) ? $data['ext']['seo'] : $data['seo'];
+        $seo = (isset($data['ext']['seo'])) ? $data['ext']['seo'] : null;
         $description = $data['description'] ?? null;
         $isActive = $data['isActive'] ?? null;
         $typeId = (isset($data['type']['id'])) ? $data['type']['id'] : $data['type'];
@@ -198,7 +198,7 @@ class CardController extends AbstractRestController implements ClassResourceInte
     {
         $item = $this->create($request);
         $data = $request->request->all();
-        $this->mapDataToEntity($data, $item);
+        $this->mapDataToEntity($data, $item, $request);
         $this->save($item);
         $this->updateRoutesForEntity($item);
         $this->domainEventCollector->collect(
