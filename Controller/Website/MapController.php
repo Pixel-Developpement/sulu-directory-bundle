@@ -31,6 +31,7 @@ class MapController extends DefaultController
 
         $filterRequest = ($this->getRequest()->get('filter')) ? $this->getRequest()->get('filter') : false;
         $attributes['filters'] = false;
+        $attributes['isFilterView'] = false;
         if (isset($attributes['content']['filters'])) {
             $attributes['filters'] = $attributes['content']['filters'];
             $categories = [];
@@ -47,6 +48,8 @@ class MapController extends DefaultController
 
             if ($filterRequest ) {
                 $categories = $filters[$filterRequest];
+                $attributes['isFilterView'] = true;
+                $attributes['filterName'] = $filterRequest;
             }
 
             $cards = $this->entityManager->getRepository(Card::class)->findByCategories($categories, $attributes['request']['defaultLocale']);

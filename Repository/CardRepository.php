@@ -74,11 +74,12 @@ class CardRepository extends EntityRepository implements DataProviderRepositoryI
     public function findByCategories(array $categories, string $locale): array
     {
         $query = $this->createQueryBuilder('card')
-            ->select('t.name, card.location, card.url, card.phoneNumber, card.email, t.routePath, c.id as category')
+            ->select('t.name, card.location, card.url, card.phoneNumber, card.email, card.isActive, t.routePath, c.id as category')
             ->leftJoin('card.category', 'c')
             ->leftJoin('card.translations', 't')
             ->where('c.id in (:categories)')
             ->andWhere('t.locale = :locale')
+            ->andWhere('card.isActive = 1')
             ->setParameter('categories', $categories)
             ->setParameter('locale', $locale);
         return $query->getQuery()->getResult();
