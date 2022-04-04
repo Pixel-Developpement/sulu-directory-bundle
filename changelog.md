@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.4.8 (04/04/2022)
+
++ Ajout des paramètres
++ Ajout du http pour les urls
++ Condition pour ne pas afficher le bloc des coordonnées
+- Fix metatitle
+- Fix fiche désactivée
+
 ## 2.4.7 (30/03/2022)
 
 + Ajout vidéo youtube + fichier
