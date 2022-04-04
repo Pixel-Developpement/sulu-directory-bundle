@@ -42,6 +42,11 @@ class DirectoryExtension extends Extension implements PrependExtensionInterface
                                 'list' => 'card.get_cards',
                             ],
                         ],
+                        'directory_settings' => [
+                            'routes' => [
+                                'detail' => 'directory.get_directory-settings'
+                            ]
+                        ]
                     ],
                     'field_type_options' => [
                         'selection' => [
