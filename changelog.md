@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.9 (05/04/2022)
+
+- Fix setting entity
+
 ## 2.4.8 (04/04/2022)
 
 + Ajout des paramètres

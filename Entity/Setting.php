@@ -40,7 +40,7 @@ class Setting implements AuditableInterface
      * @ORM\JoinColumn(onDelete="SET NULL")
      * @Serializer\Expose()
      */
-    private ?MediaInterface $defaultImage;
+    private ?MediaInterface $defaultImage = null;
 
     /**
      * @return int|null
