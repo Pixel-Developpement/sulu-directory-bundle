@@ -34,7 +34,7 @@
             </div>
             <div class="sm:grid sm:grid-cols-2 sm:gap-8">
                 <div class="content">
-                    {% if card.url or card.email or card.phoneNumber or card.location or card.facebook or card.instagram or card.twitter or card.linkedin %}
+                    {% if card.url or card.email or card.phoneNumber or (card.location is defined and card.location.town)  or card.facebook or card.instagram or card.twitter or card.linkedin %}
                         <div class="bg-gray p-8 rounded-xl ">
                             {% if card.url %}
                                 <p class="flex items-center flex-col sm:flex-row gap-x-2 mb-4 text-sm sm:text-base text-center sm:text-left">
