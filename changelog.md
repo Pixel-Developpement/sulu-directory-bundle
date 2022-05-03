@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.10 (03/05/2022)
+
+- Fix pour ne pas afficher le bloc des coordonnées
+- Fix card entity
+
 ## 2.4.9 (05/04/2022)
 
 - Fix setting entity
