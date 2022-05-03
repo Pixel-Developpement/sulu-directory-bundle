@@ -126,13 +126,13 @@ class Card
      * @ORM\Column(type="json", nullable=true)
      * @Serializer\Expose()
      */
-    private ?array $pdfs;
+    private ?array $pdfs = null;
 
     /**
      * @ORM\Column(type="string", nullable=true)
      * @Serializer\Expose()
      */
-    private ?string $youtubeId;
+    private ?string $youtubeId = null;
 
     /**
      * @ORM\Column(type="json", nullable=true)
